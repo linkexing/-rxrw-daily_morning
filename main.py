@@ -20,7 +20,7 @@ template_id = os.environ["TEMPLATE_ID"]
 
 def get_weather():
   print(city)
-  url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+  url = "https://restapi.amap.com/v3/weather/weatherInfo?city=310112&key=9d7cb19988024796da0a6d592d8863de"
   res = requests.get(url).json()
   weather = res['data']['list'][0]
   return weather['weather'], math.floor(weather['temp'])
