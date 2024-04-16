@@ -5,7 +5,23 @@ from wechatpy.client.api import WeChatMessage, WeChatTemplate
 import requests
 import os
 import random
+import schedule
 
+i = 0
+ 
+def some_task():
+    global i
+    i += 1
+    print(i)
+    if i == 5:
+        schedule.cancel_job(job)
+        print('cancel job')
+        exit(0)
+ 
+ 
+job = schedule.every().second.do(some_task)
+while True:
+    schedule.run_pending()
 today = datetime.now()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
